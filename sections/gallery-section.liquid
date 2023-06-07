@@ -1,0 +1,131 @@
+{% comment %}
+** Custom Gallery - customgallery **
+- Draggable section
+{% endcomment %}
+
+<div class="customgallery">
+  <h3 class="customgallery__title">
+    {{ section.settings.heading }}
+  </h3>
+  <div class="customgallery__text">
+    {{ section.settings.description }}
+  </div>
+  <div class="customgallery__content">
+    {% for block in section.blocks %}
+
+			{% if block.settings.image != blank %}
+				<div class="customgallery__image" style="width: {{ block.settings.width }}; height: {{ block.settings.height }};">
+					<img src="{{ block.settings.image | img_url:'master' }}" style="padding: {{ block.settings.padding }}; height: {{ block.settings.height }};" />
+				</div>
+			{% else %}
+				<div class="customgallery__image" style="width: {{ block.settings.width }}; height: {{ block.settings.height }};">
+					{{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+				</div>
+			{% endif %}
+
+    {% endfor %}
+  </div>
+</div>
+
+{% schema %}
+{
+	"name": "Custom Gallery",
+  "settings": [
+                {
+                  "type": "text",
+                  "label": "Gallery Headline",
+                  "id": "heading"
+                },
+                {
+                  "type": "richtext",
+                  "label": "Gallery Description",
+                  "id": "description"
+                }
+              ],
+  "blocks": [
+              {
+                "type": "image",
+                "name": "image block",
+                "settings": [
+                              {
+                                "type": "image_picker",
+                                "label": "your image",
+                                "id": "image"
+                              },
+                              {
+                                "type": "text",
+                                "label": "Image Padding (15px 0 15px 15px)",
+                                "id": "padding"
+                              },
+															{
+																"type": "select",
+																"id": "width",
+																"label": "Image Width",
+																"default": "100%",
+																"options": [
+																	{
+																		"value": "25%",
+																		"label": "25%"
+																	},
+																	{
+																		"value": "33.33%",
+																		"label": "33%"
+																	},
+																	{
+																		"value": "50%",
+																		"label": "50%"
+																	},
+																	{
+																		"value": "66%",
+																		"label": "66%"
+																	},
+																	{
+																		"value": "75%",
+																		"label": "75%"
+																	},
+																	{
+																		"value": "100%",
+																		"label": "100%"
+																	}
+																]
+															},
+															{
+																"type": "select",
+																"id": "height",
+																"label": "Image Height",
+																"default": "240px",
+																"options": [
+																	{
+																		"value": "160px",
+																		"label": "160px"
+																	},
+																	{
+																		"value": "240px",
+																		"label": "240px"
+																	},
+																	{
+																		"value": "360px",
+																		"label": "360px"
+																	},
+																	{
+																		"value": "420px",
+																		"label": "420px"
+																	},
+																	{
+																		"value": "640px",
+																		"label": "640px"
+																	}
+																]
+															}
+                            ]
+              }
+            ],
+  "presets": [
+              {
+                "category": "image",
+                "name": "gallery"
+              }
+            ]  
+}
+
+{% endschema %}

@@ -1,0 +1,82 @@
+{% assign on_sale = false %}
+{% assign sale_text = 'products.product.sale' | t %}
+{% if featured.compare_at_price > featured.price %}
+  {% assign on_sale = true %}
+{% endif %}
+
+{% assign sold_out = true %}
+{% assign sold_out_text = 'products.product.sold_out' | t %}
+{% if featured.available %}
+  {% assign sold_out = false %}
+{% endif %}
+
+{% if featured.title == '' %}
+  {% comment %}add default state for product block in storefront editor{% endcomment %}
+  {% capture product_title %}{{ 'home_page.onboarding.product_title' | t }}{% endcapture %}
+{% else %}
+  {% capture product_title %}{{ featured.title | escape }}{% endcapture %}
+{% endif %}
+
+
+  <a href="{{ featured.url }}" class="grid-link{% if section.settings.center_grid_link %} text-center{% endif %}">
+    <span class="grid-link__image grid-link__image--loading{% if section.settings.show_sold_out_circle %} grid-link__image-sold-out{% endif %} grid-link__image--product" data-image-wrapper>
+      {% if on_sale and section.settings.show_sale_circle %}
+        <span class="badge badge--sale">
+          <span class="badge__text{% if sale_text.size > 7 %} badge__text--small{% endif %}">{{ 'products.product.sale' | t }}</span>
+        </span>
+      {% endif %}
+      {% if sold_out and section.settings.show_sold_out_circle %}
+        <span class="badge badge--sold-out">
+          <span class="badge__text{% if sold_out_text.size > 9 %} badge__text--small{% endif %}">{{ 'products.product.sold_out' | t }}</span>
+        </span>
+      {% endif %}
+      <span class="grid-link__image-centered">
+        {% if featured.title != '' %}
+          {% unless featured.featured_image == blank %}
+            {% capture img_id %}ProductImage-{{ featured.featured_image.id }}{% endcapture %}
+            {% capture wrapper_id %}ProductImageWrapper-{{ featured.featured_image.id }}{% endcapture %}
+            {%- assign img_url = featured.featured_image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+
+            {% include 'image-style' with image: featured.featured_image, width: product_width, height: 480, wrapper_id: wrapper_id, img_id: img_id %}
+            <div id="{{ wrapper_id }}" class="product__img-wrapper supports-js">
+              <div>
+                <img id="{{ img_id }}"
+                     alt="{{ featured.featured_image.alt | escape }}"
+                     class="product__img lazyload"
+                     data-src="{{ img_url }}"
+                     data-widths="[150, 220, 360, 470, 600, 750, 940, 1080, 1296, 1512, 1728, 2048]"
+                     data-aspectratio="{{ featured.featured_image.aspect_ratio }}"
+                     data-sizes="auto"
+                     data-image>
+              </div>
+            </div>
+          {% else %}
+            <img src="{{ featured.featured_image.src | img_url: 'large' }}" alt="{{ featured.featured_image.alt | escape }}" class="product__img" data-image>
+          {% endunless %}
+          <noscript>
+            <img src="{{ featured.featured_image.src | img_url: 'large' }}" alt="{{ featured.featured_image.alt | escape }}" class="product__img">
+          </noscript>
+        {% else %}
+          {% capture current %}{% cycle 1, 2, 3, 4, 5, 6 %}{% endcapture %}
+          {{ 'product-' | append: current | placeholder_svg_tag: 'placeholder-svg' }}
+        {% endif %}
+      </span>
+    </span>
+    <a class="grid-view-item__link" href="{{ product.url | within: collection }}">      
+      <span class="shopify-product-reviews-badge" data-id="{{ product.id }}">
+      </span>
+    </a>
+    <p class="h4 grid-view-item__title product-card__title" aria-hidden="true">{{ product_title }}</p>
+    
+    {% if featured.title != '' %}
+    <div class="product__info--block">
+      <strong class="product__price--now">{{product.price_min | money}}</strong>
+      {% if product.price_min != product.compare_at_price %}
+      <strike class="product__price--old">            
+        {{product.compare_at_price | money}}
+      </strike>
+      {% endif %}
+      <p class="product__price--free">+Free shipping to USA</p>
+    </div> 
+    {% endif %}
+  </a>

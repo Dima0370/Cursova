@@ -1,0 +1,394 @@
+{% comment %}
+** Custom Gallery - gallery **
+- Draggable section
+{% endcomment %}
+
+{% assign default = '1400x' %}
+{% assign size1 = '480x' %}
+{% assign size2 = '765x' %}
+{% assign size3 = '900x' %}
+{% assign size4 = '1000x' %}
+{% assign size5 = '1100x' %}
+{% assign size6 = '1300x' %}
+{% assign size7 = '1500x' %}
+{% assign size8 = '1700x' %}
+{% assign size9 = '1900x' %}
+{% assign size10 = '2000x' %}
+
+<div class="custom_dev_gallery">
+  <div class="custom_dev_gallery__item">
+    <section id="banner-{{section.id}}" class="banner">
+      {% if section.settings.image != nil %}
+        <img  src="{{ section.settings.image | img_url: '100x'}}"
+              alt="{{ section.settings.image.alt | escape }}"
+              class="lazyload {{ settings.image_loading_style }}"
+              sizes="100vw"
+              data-src="{{ section.settings.image | img_url: default }}"
+              srcset="
+              {{ section.settings.image | img_url: default }} {{default | replace: 'x', 'w'}},
+              {{ section.settings.image | img_url: size1 }} {{size1 | replace: 'x', 'w'}},
+              {{ section.settings.image | img_url: size2 }} {{size2 | replace: 'x', 'w'}},
+              {{ section.settings.image | img_url: size3 }} {{size3 | replace: 'x', 'w'}},
+              {{ section.settings.image | img_url: size4 }} {{size4 | replace: 'x', 'w'}},
+              {{ section.settings.image | img_url: size5 }} {{size5 | replace: 'x', 'w'}},
+              {{ section.settings.image | img_url: size6 }} {{size6 | replace: 'x', 'w'}},
+              {{ section.settings.image | img_url: size7 }} {{size7 | replace: 'x', 'w'}},
+              {{ section.settings.image | img_url: size8 }} {{size8 | replace: 'x', 'w'}},
+              {{ section.settings.image | img_url: size9 }} {{size9 | replace: 'x', 'w'}},
+              {{ section.settings.image | img_url: size10 }} {{size10 | replace: 'x', 'w'}}"
+
+              />
+      {% else %}
+        {{ 'lifestyle-1' | placeholder_svg_tag: 'placeholder-svg placeholder-svg--banner' }}
+      {% endif %}
+      {% unless section.settings.button1_link != blank and section.settings.button2_link != blank %}
+        {% if section.settings.button1_link != blank %}
+          <a href="{{ section.settings.button1_link }}" class="banner-full-link">
+            {{ section.settings.button1 }}
+          </a>
+        {% endif %}
+        {% if section.settings.button2_link != blank %}
+          <a href="{{ section.settings.button2_link }}" class="banner-full-link">
+            {{ section.settings.button2 }}
+          </a>
+        {% endif %}
+      {% endunless %}
+      {% unless section.settings.pretext == blank and section.settings.title == blank and section.settings.subtitle == blank and section.settings.button1 == blank and section.settings.button2 == blank %}
+        <div class="position-{{ section.settings.text_position }} caption js-caption">
+          <div class="caption-content caption-background-{{ section.settings.caption_background }} caption-transparency-{{ section.settings.caption_background_transparency }} align-{{ section.settings.text_align }}">
+            {% if section.settings.pretext != blank %}
+              <div class="pretext">
+                {{ section.settings.pretext }}
+              </div>
+            {% endif %}
+            {% if section.settings.title != blank %}
+              <h1 class="headline">
+                {{ section.settings.title }}
+              </h1>
+            {% endif %}
+            {% if section.settings.subtitle != blank %}
+              <div class="subtitle">
+                {{ section.settings.subtitle }}
+              </div>
+            {% endif %}
+            {% if section.settings.button1 != blank %}
+              <a {% if section.settings.button1_link != blank %}href="{{ section.settings.button1_link }}"{% endif %} class="action_button first_button highlight-{{ section.settings.button1_highlight }}">
+                {{ section.settings.button1 }}
+              </a>
+            {% endif %}
+            {% if section.settings.button2 != blank %}
+              <a {% if section.settings.button2_link != blank %}href="{{ section.settings.button2_link }}"{% endif %} class="action_button second_button highlight-{{ section.settings.button2_highlight }}">
+                {{ section.settings.button2 }}
+              </a>
+            {% endif %}
+          </div>
+        </div>
+      {% endunless %}
+    </section>
+  </div>
+  <div class="custom_dev_gallery__item">
+    <section id="banner-{{section.id}}" class="banner">
+      {% if section.settings.image != nil %}
+        <img  src="{{ section.settings.image | img_url: '100x'}}"
+              alt="{{ section.settings.image.alt | escape }}"
+              class="lazyload {{ settings.image_loading_style }}"
+              sizes="100vw"
+              data-src="{{ section.settings.image | img_url: default }}"
+              srcset="
+              {{ section.settings.image | img_url: default }} {{default | replace: 'x', 'w'}},
+              {{ section.settings.image | img_url: size1 }} {{size1 | replace: 'x', 'w'}},
+              {{ section.settings.image | img_url: size2 }} {{size2 | replace: 'x', 'w'}},
+              {{ section.settings.image | img_url: size3 }} {{size3 | replace: 'x', 'w'}},
+              {{ section.settings.image | img_url: size4 }} {{size4 | replace: 'x', 'w'}},
+              {{ section.settings.image | img_url: size5 }} {{size5 | replace: 'x', 'w'}},
+              {{ section.settings.image | img_url: size6 }} {{size6 | replace: 'x', 'w'}},
+              {{ section.settings.image | img_url: size7 }} {{size7 | replace: 'x', 'w'}},
+              {{ section.settings.image | img_url: size8 }} {{size8 | replace: 'x', 'w'}},
+              {{ section.settings.image | img_url: size9 }} {{size9 | replace: 'x', 'w'}},
+              {{ section.settings.image | img_url: size10 }} {{size10 | replace: 'x', 'w'}}"
+
+              />
+      {% else %}
+        {{ 'lifestyle-1' | placeholder_svg_tag: 'placeholder-svg placeholder-svg--banner' }}
+      {% endif %}
+      {% unless section.settings.button1_link != blank and section.settings.button2_link != blank %}
+        {% if section.settings.button1_link != blank %}
+          <a href="{{ section.settings.button1_link }}" class="banner-full-link">
+            {{ section.settings.button1 }}
+          </a>
+        {% endif %}
+        {% if section.settings.button2_link != blank %}
+          <a href="{{ section.settings.button2_link }}" class="banner-full-link">
+            {{ section.settings.button2 }}
+          </a>
+        {% endif %}
+      {% endunless %}
+      {% unless section.settings.pretext == blank and section.settings.title == blank and section.settings.subtitle == blank and section.settings.button1 == blank and section.settings.button2 == blank %}
+        <div class="position-{{ section.settings.text_position }} caption js-caption">
+          <div class="caption-content caption-background-{{ section.settings.caption_background }} caption-transparency-{{ section.settings.caption_background_transparency }} align-{{ section.settings.text_align }}">
+            {% if section.settings.pretext != blank %}
+              <div class="pretext">
+                {{ section.settings.pretext }}
+              </div>
+            {% endif %}
+            {% if section.settings.title != blank %}
+              <h1 class="headline">
+                {{ section.settings.title }}
+              </h1>
+            {% endif %}
+            {% if section.settings.subtitle != blank %}
+              <div class="subtitle">
+                {{ section.settings.subtitle }}
+              </div>
+            {% endif %}
+            {% if section.settings.button1 != blank %}
+              <a {% if section.settings.button1_link != blank %}href="{{ section.settings.button1_link }}"{% endif %} class="action_button first_button highlight-{{ section.settings.button1_highlight }}">
+                {{ section.settings.button1 }}
+              </a>
+            {% endif %}
+            {% if section.settings.button2 != blank %}
+              <a {% if section.settings.button2_link != blank %}href="{{ section.settings.button2_link }}"{% endif %} class="action_button second_button highlight-{{ section.settings.button2_highlight }}">
+                {{ section.settings.button2 }}
+              </a>
+            {% endif %}
+          </div>
+        </div>
+      {% endunless %}
+    </section>
+  </div>
+</div>
+{% schema %}
+
+
+{
+	"name": "Custom Gallery",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": {
+        "de": "Foto",
+        "en": "Image",
+        "es": "Imagen",
+        "fr": "Image",
+        "it": "Immagine",
+        "ja": "画像",
+        "pt-BR": "Imagem"
+      }
+    },
+    {
+      "type": "select",
+      "id": "width",
+      "label": {
+        "de": "Breite des Elements",
+        "en": "Container width",
+        "es": "Ancho del contenedor",
+        "fr": "Largeur du conteneur",
+        "it": "Larghezza contenitore",
+        "ja": "コンテナーの幅",
+        "pt-BR": "Largura do recipiente"
+      },
+      "default": "50%",
+      "options": [
+        {
+          "value": "25%",
+          "label": {
+            "de": "25%",
+            "en": "25%",
+            "es": "25%",
+            "fr": "25 %",
+            "it": "25%",
+            "ja": "25%",
+            "pt-BR": "25%"
+          }
+        },
+        {
+          "value": "33%",
+          "label": {
+            "de": "33%",
+            "en": "33%",
+            "es": "33%",
+            "fr": "33 %",
+            "it": "33%",
+            "ja": "33%",
+            "pt-BR": "33%"
+          }
+        },
+        {
+          "value": "50%",
+          "label": {
+            "de": "50%",
+            "en": "50%",
+            "es": "50%",
+            "fr": "50 %",
+            "it": "50%",
+            "ja": "50%",
+            "pt-BR": "50%"
+          }
+        },
+        {
+          "value": "66%",
+          "label": {
+            "de": "66%",
+            "en": "66%",
+            "es": "66%",
+            "fr": "66 %",
+            "it": "66%",
+            "ja": "66%",
+            "pt-BR": "66%"
+          }
+        },
+        {
+          "value": "75%",
+          "label": {
+            "de": "75%",
+            "en": "75%",
+            "es": "75%",
+            "fr": "75 %",
+            "it": "75%",
+            "ja": "75%",
+            "pt-BR": "75%"
+          }
+        },
+        {
+          "value": "100%",
+          "label": {
+            "de": "100%",
+            "en": "100%",
+            "es": "100%",
+            "fr": "100 %",
+            "it": "100%",
+            "ja": "100%",
+            "pt-BR": "100%"
+          }
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "alignment",
+      "label": {
+        "de": "Vertikale Ausrichtung",
+        "en": "Vertical alignment",
+        "es": "Alineación vertical",
+        "fr": "Alignement vertical",
+        "it": "Allineamento verticale",
+        "ja": "垂直アラインメント",
+        "pt-BR": "Alinhamento vertical"
+      },
+      "default": "center",
+      "options": [
+        {
+          "value": "top-left",
+          "label": {
+            "de": "Oben links",
+            "en": "Top left",
+            "es": "Superior izquierda",
+            "fr": "En haut à gauche",
+            "it": "In alto a sinistra",
+            "ja": "左上",
+            "pt-BR": "Superior esquerdo"
+          }
+        },
+        {
+          "value": "top-middle",
+          "label": {
+            "de": "Oben mittig",
+            "en": "Top middle",
+            "es": "Superior al medio",
+            "fr": "En haut au centre",
+            "it": "Al centro in alto",
+            "ja": "中央上",
+            "pt-BR": "Centro da parte superior"
+          }
+        },
+        {
+          "value": "top-right",
+          "label": {
+            "de": "Oben rechts",
+            "en": "Top right",
+            "es": "Superior derecha",
+            "fr": "En haut à droite",
+            "it": "In alto a destra",
+            "ja": "右上",
+            "pt-BR": "Superior direito"
+          }
+        },
+        {
+          "value": "middle-left",
+          "label": {
+            "de": "Mitte links",
+            "en": "Middle left",
+            "es": "Al medio a la izquierda",
+            "fr": "Au milieu à gauche",
+            "it": "Nel mezzo a sinistra",
+            "ja": "中央左",
+            "pt-BR": "Meio esquerdo"
+          }
+        },
+        {
+          "value": "center",
+          "label": {
+            "de": "Mitte",
+            "en": "Middle",
+            "es": "Al medio",
+            "fr": "Milieu",
+            "it": "Al centro",
+            "ja": "中央",
+            "pt-BR": "Meio"
+          }
+        },
+        {
+          "value": "middle-right",
+          "label": {
+            "de": "Mitte rechts",
+            "en": "Middle right",
+            "es": "Al medio a la derecha",
+            "fr": "Au milieu à droite",
+            "it": "In centro a destra",
+            "ja": "中央右",
+            "pt-BR": "Meio direito"
+          }
+        },
+        {
+          "value": "bottom-left",
+          "label": {
+            "de": "Unten links",
+            "en": "Bottom left",
+            "es": "Inferior izquierda",
+            "fr": "En bas à gauche",
+            "it": "In basso a sinistra",
+            "ja": "左下",
+            "pt-BR": "Inferior esquerdo"
+          }
+        },
+        {
+          "value": "bottom-middle",
+          "label": {
+            "de": "Unten mittig",
+            "en": "Bottom middle",
+            "es": "Inferior al medio",
+            "fr": "En bas au centre",
+            "it": "Al centro in basso",
+            "ja": "中央下",
+            "pt-BR": "Centro da parte inferior"
+          }
+        },
+        {
+          "value": "bottom-right",
+          "label": {
+            "de": "Unten rechts",
+            "en": "Bottom right",
+            "es": "Inferior derecha",
+            "fr": "En bas à droite",
+            "it": "In basso a destra",
+            "ja": "右下",
+            "pt-BR": "Inferior direito"
+          }
+        }
+      ]
+    }
+  ]
+}
+
+{% endschema %}

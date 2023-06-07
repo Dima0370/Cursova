@@ -1,0 +1,64 @@
+<div id="spf-product-reviews" data-id="{{product.id}}">
+
+  <div class="spr-container">
+    <div class="spr-header">
+      <h2 class="spr-header-title">Write a review</h2>
+    </div> <!-- /.spr-header -->
+
+    <div class="spr-content">
+      <div class="spr-form">
+        <form class="new-review-form">
+          <fieldset class="spr-form-contact">
+            <div class="spr-form-contact-name">
+              <label class="spr-form-label" for="review_author">Name</label>
+              <input class="spr-form-input spr-form-input-text" id="review_author" type="text" name="review[author]" value="" placeholder="Enter your name">
+            </div>
+            <div class="spr-form-contact-email">
+              <label class="spr-form-label" for="review_email">Email</label>
+              <input class="spr-form-input spr-form-input-email" id="review_email" type="email" name="review[email]" value="" placeholder="john.smith@example.com">
+            </div>
+          </fieldset> <!-- /.spr-form-contact -->
+
+          <fieldset class="spr-form-review">
+            <div class="spr-form-review-rating">
+              <label class="spr-form-label" for="review[rating]">Rating</label>
+              <div class="spr-form-input spr-starrating ">
+                <a href="#" class="spr-icon spr-icon-star spr-icon-star-empty">&nbsp;</a>
+                <a href="#" class="spr-icon spr-icon-star spr-icon-star-empty">&nbsp;</a>
+                <a href="#" class="spr-icon spr-icon-star spr-icon-star-empty">&nbsp;</a>
+                <a href="#" class="spr-icon spr-icon-star spr-icon-star-empty">&nbsp;</a>
+                <a href="#" class="spr-icon spr-icon-star spr-icon-star-empty">&nbsp;</a>
+              </div>
+            </div> <!-- /.spr-form-review-rating -->
+
+						
+						<p class="line-item-property\_\_field"> <label for="custom\_photo">Photo (JPG or PNG)</label> <input required id="custom\_photo" type="file" name="properties\[Photo\]"> </p>
+						
+
+            <div class="spr-form-review-title">
+              <label class="spr-form-label" for="review_title">Review Title</label>
+              <input class="spr-form-input spr-form-input-text" id="review_title" type="text" name="review[title]" value="" placeholder="Give your review a title">
+            </div> <!-- /.spr-form-review-title -->
+
+
+
+            <div class="spr-form-review-body">
+              <label class="spr-form-label" for="review_body">Body of Review <span class="spr-form-review-body-charactersremaining">(1500)</span></label>
+              <div class="spr-form-input">
+                <textarea class="spr-form-input spr-form-input-textarea" id="review_body" name="review[body]" rows="10" placeholder="Write your comments here"></textarea>
+              </div>
+            </div> <!-- /.spr-form-review-body -->
+          </fieldset> <!-- /.spr-form-review -->
+
+          <fieldset class="spr-form-actions">
+            <input type="submit" class="spr-button spr-button-primary button button-primary btn btn-primary" value="Submit Review">
+            <input type="button" class="spr-button button btn" value="Cancel">
+          </fieldset> <!-- /.spr-form-actions -->
+        </form>
+      </div>     
+
+    </div> <!-- /.spr-content -->
+
+  </div> <!-- /.spr-container -->
+
+</div> <!-- /#shopify-product-reviews -->
